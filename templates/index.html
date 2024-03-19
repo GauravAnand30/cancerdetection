@@ -1,0 +1,116 @@
+{% extends "import.html" %} 
+{% block content %}
+
+<style>
+    /* Define custom styles here */
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #e69ae6; /* Changed background color */
+        color: #0e0000; /* Changed text color */
+        margin: 0;
+        padding: 0;
+    }
+
+    .container {
+        max-width: 800px;
+        margin: 50px auto;
+        padding: 40px;
+        background-color: #ffffff;
+        border-radius: 10px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    }
+
+    h2 {
+        text-align: center;
+        font-size: 32px;
+        font-weight: bold;
+        color: #007bff; /* Changed text color */
+        margin-bottom: 30px;
+    }
+
+    #imageUpload {
+        display: block;
+        margin: 0 auto;
+        padding: 15px;
+        font-size: 16px;
+        border: 2px dashed #007bff; /* Changed border style */
+        border-radius: 5px;
+        background-color: #f9f7fa;
+        color: #007bff; /* Changed text color */
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    #imagePreview {
+        display: block;
+        margin: 20px auto;
+        max-width: 100%;
+        height: auto;
+        border-radius: 5px;
+    }
+
+    #btn-predict {
+        display: block;
+        margin: 0 auto;
+        padding: 15px 30px;
+        font-size: 18px;
+        font-weight: bold;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    #btn-predict:hover {
+        background-color: #0056b3; /* Darken background color on hover */
+    }
+
+    .loader {
+        display: none;
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    #result {
+        text-align: center;
+        margin-top: 20px;
+        font-size: 24px;
+        font-weight: bold;
+    }
+
+    .info-text {
+        text-align: center;
+        margin-top: 20px;
+        font-size: 16px;
+        color: #555; /* Changed text color */
+
+        
+    }
+</style>
+
+<div class="container">
+    <h2>BRAIN TUMOR CLASSIFICATION</h2>
+
+    <p class="info-text">Please upload an X-ray image of the brain to predict tumor presence.</p>
+
+    <form id="upload-file" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" id="imageUpload" accept=".png, .jpg, .jpeg">
+    </form>
+
+    <div class="image-section" style="display:none;">
+        <img id="imagePreview" class="img-responsive" src="#" alt="Preview Image">
+        <div>
+            <button type="button" class="btn btn-info btn-lg" id="btn-predict">Predict!</button>
+        </div>
+    </div>
+
+    <div class="loader"></div>
+
+    <h3 id="result">
+        <span></span>
+    </h3>
+</div>
+
+{% endblock %}
